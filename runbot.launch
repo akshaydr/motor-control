@@ -1,0 +1,16 @@
+<launch>
+  <param name="use_gui" value="true"/>
+  <param name="robot_description" command="$(find xacro)/xacro.py $(find wheeledbot)/urdf/4wheeled_bot.urdf"/>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find wheeledbot)/myRviz_config.rviz" required="true"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <remap from="/joint_states" to="/joint_states1"/>
+  </node>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+  <!-- <node name="controller" pkg="wheeledbot" type="control.py" output="screen"/> -->
+  <node name="controller" pkg="wheeledbot" type="control2.py" output="screen"/>
+  <!-- <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop"> -->
+  <!-- <remap from"cmd_vel" to="robot0/cmd_vel"/> -->
+  <!-- </node> -->
+  <!-- <node name="broadcaster" pkg="wheeledbot" type="broadcaster.py" output="screen"/> -->
+</launch>
