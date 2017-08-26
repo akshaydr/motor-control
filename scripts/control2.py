@@ -36,24 +36,6 @@ if __name__ == '__main__':
       fl += step
       br += step
       bl += step
-    else if(2):  # backward
-      fr -= step
-      fl -= step
-      br -= step
-      bl -= step
-    else if(3):  # left
-      fr -= step
-      fl += step
-      br -= step
-      bl += step
-    else if(4):  # right
-      fr += step
-      fl -= step
-      br += step
-      bl -= step
-
-  # print(joint_state)
-
-  pub.publish(joint_state)
-
-  rospy.sleep(1 / rate)
+      
+    pub.publish(joint_state)
+    rospy.sleep(1 / rate)
